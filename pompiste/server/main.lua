@@ -25,14 +25,10 @@ local function Distil(source)
 		  TriggerClientEvent('esx:showNotification', _source, '~r~Vous n\'avez plus de pétrol brut à distiller.')
 		  Playersdisti[_source] = false
 		else
-			if xPlayer.getInvPoid() + (2 * math.floor(Config.ItemDistiled/2)) - (2 * math.floor(Config.ItemDistiled)) <= 100 then
 				 xPlayer.removeInventoryItem('petrole', Config.ItemDistiled)
 				 xPlayer.addInventoryItem('essence', math.floor(Config.ItemDistiled/2))
 				 TriggerClientEvent('esx:showNotification', _source, 'Vous avez distillé '.. Config.ItemDistiled ..' de pétrol brut.')
 				 Distil(_source)
-			else
-				TriggerClientEvent('esx:showNotification', _source, 'Vous n\'avez pas assez de place sur vous.')
-			end
 		end
 
 	  end
@@ -45,13 +41,12 @@ local function Recolting(source)
 		if Playersrecolt[source] == true then
 		local _source = source
 		local xPlayer = ESX.GetPlayerFromId(_source)
-		if xPlayer.getInvPoid() + (2 * math.floor(Config.ItemRecolte)) <= 100 then
-				 xPlayer.addInventoryItem('petrole', Config.ItemRecolte)
-				 TriggerClientEvent('esx:showNotification', _source, 'Vous avez récolté '.. Config.ItemRecolte ..' de pétrol brut.')
 				 Recolting(_source)
 			else
 				TriggerClientEvent('esx:showNotification', _source, 'Vous n\'avez pas assez de place sur vous.')
 			end
+		TriggerClientEvent('esx:showNotification', _source, 'Vous avez récolté '.. Config.ItemRecolte ..' de pétrol brut.')
+		Recolting(_source)
 	  end
 	end)
 end
