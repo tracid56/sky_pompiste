@@ -41,10 +41,7 @@ local function Recolting(source)
 		if Playersrecolt[source] == true then
 		local _source = source
 		local xPlayer = ESX.GetPlayerFromId(_source)
-				 Recolting(_source)
-			else
-				TriggerClientEvent('esx:showNotification', _source, 'Vous n\'avez pas assez de place sur vous.')
-			end
+		Recolting(_source)
 		TriggerClientEvent('esx:showNotification', _source, 'Vous avez récolté '.. Config.ItemRecolte ..' de pétrol brut.')
 		Recolting(_source)
 	  end
